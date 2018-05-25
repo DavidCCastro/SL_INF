@@ -1,0 +1,21 @@
+ 
+- hosts: 127.0.0.1
+  connection: local
+  user: root
+  sudo: false
+  gather_facts: false
+  serial: 1
+
+  tasks:
+  - name: Check for vSphere access parameters
+    fail: msg="Must set vcenter_user and vcenter_pass in a Vault"
+    when: (vcenter_user is not defined) or (vcenter_pass is not defined)
+
+  - name: Power OFF VM
+    vsphere_guest:
+      vcenter_hostname: "{{ vcenter_ip }}"
+      username: "{{ vcenter_user }}"
+      password: "{{ vcenter_pass }}"
+      validate_certs: false
+      guest: slbase1
+      state: powered_off
