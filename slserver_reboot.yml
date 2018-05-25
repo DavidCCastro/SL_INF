@@ -1,0 +1,19 @@
+- hosts: smartlis_base_servers 
+  remote_user: smartlis
+
+  tasks:
+  - name: reboot Smartlis base servers
+    shell: sudo sleep 2 && sudo shutdown -r now
+    async: 1
+    poll: 0
+    ignore_errors: true
+
+  - name: pause for 30 seconds
+    pause: seconds=30
+
+  - name: ping servers
+    local_action: shell ansible -u root -m ping smartlis_base_servers 
+    register: result
+    until: result.rc == 0
+    retries: 30
+    delay: 10 

@@ -1,0 +1,24 @@
+- hosts: 127.0.0.1
+  connection: local
+  user: root
+  sudo: false
+  gather_facts: false
+  serial: 1
+
+  tasks:
+  - name: Check for vSphere access parameters
+    fail: msg="Must set vcenter_user and vcenter_pass in a Vault"
+    when: (vcenter_user is not defined) or (vcenter_pass is not defined)
+
+  - name: Create baseos VM
+    vmware_guest:
+      hostname: "{{ vcenter_ip }}"
+      username: "{{ vcenter_user }}"
+      password: "{{ vcenter_pass }}"
+      validate_certs: false
+      name: slbase1
+      folder: /CSI/vm
+      esxi_hostname: 192.1.1.151
+      template: slbaseos_tplt
+      state: poweredon
+      datacenter: CSI

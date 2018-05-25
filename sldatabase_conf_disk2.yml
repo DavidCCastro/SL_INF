@@ -1,0 +1,23 @@
+- hosts: sldatabase 
+  remote_user: smartlis
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: create partition for /dev/sdb
+    parted:
+      device: /dev/sdb
+      number: 1
+      state: present
+
+  - name: create filesystem for /dev/sdb1
+    filesystem:
+      fstype: ext4
+      dev: /dev/sdb1
+
+  - name: mount device /dev/sdb1 to path /data
+    mount:
+      path: /data
+      src: /dev/sdb1
+      fstype: ext4
+      state: mounted

@@ -1,0 +1,12 @@
+- hosts: slbase1
+  user: smartlis
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Full system upgrade
+      apt: 
+        upgrade: dist
+    - name: install python-pip
+      apt:
+        name: python-pip
+        state: present
