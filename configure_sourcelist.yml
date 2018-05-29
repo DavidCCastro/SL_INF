@@ -20,10 +20,9 @@
         dest: /home/
         
     - name: install keys
-      apt_key:
-        data: /home/trusted-keys
-        state: present
-        
+      become: yes
+      shell: apt-key add /home/trusted-keys > /home/smartlis/keys.log
+              
     - name: update apt cache
       apt:
         update_cache: yes
