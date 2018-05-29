@@ -1,0 +1,29 @@
+- hosts: smartlis_base_servers
+  user: smartlis
+  become: yes
+  become_methos: sudo
+  tasks:
+    
+    - name: remove sources.list
+      file:
+        path: /etc/apt/sources.list
+        state: absent
+    
+    - name: copy sources.list from github repo
+      get_url:
+        url: https://github.com/davidccastro/sl_inf/sources.list
+        dest: /etc/apt/
+        
+    - name: copy keys file
+      get_url: 
+        url: https://github.com/davidccastro/sl_inf/trusted-keys
+        dest: /home/
+        
+    - name: install keys
+      apt_key
+        data: /home/trusted-keys
+        state: present
+        
+    - name: update apt cache
+      apt:
+        update_cache: yes
