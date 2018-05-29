@@ -1,0 +1,38 @@
+############# config ##################
+#
+ set base_path    /data/apt-mirror
+#
+# set mirror_path  $base_path/mirror
+# set skel_path    $base_path/skel
+# set var_path     $base_path/var
+# set cleanscript $var_path/clean.sh
+# set defaultarch  <running host architecture>
+# set postmirror_script $var_path/postmirror.sh
+# set run_postmirror 0
+set nthreads     20
+set _tilde 0
+#
+############# end config ##############
+
+deb http://archive.ubuntu.com/ubuntu xenial main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu xenial-security main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu xenial-updates main restricted universe multiverse
+#deb http://archive.ubuntu.com/ubuntu xenial-proposed main restricted universe multiverse
+#deb http://archive.ubuntu.com/ubuntu xenial-backports main restricted universe multiverse
+
+deb-src http://archive.ubuntu.com/ubuntu xenial main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu xenial-security main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu xenial-updates main restricted universe multiverse
+#deb-src http://archive.ubuntu.com/ubuntu xenial-proposed main restricted universe multiverse
+#deb-src http://archive.ubuntu.com/ubuntu xenial-backports main restricted universe multiverse
+
+#deb https://artifacts.elastic.co/packages/6.x/apt stable main
+deb http://packages.elastic.co/elasticsearch/1.7/debian stable main
+#deb https://packages.erlang-solutions.com/ubuntu xenial contrib
+#deb https://packages.erlang-solutions.com/debian jessie contrib
+deb https://packages.erlang-solutions.com/ubuntu trusty contrib
+deb https://apache.bintray.com/couchdb-deb xenial main
+deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main
+deb http://packages.elastic.co/kibana/4.1/debian stable main
+
+clean http://archive.ubuntu.com/ubuntu
