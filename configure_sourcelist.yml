@@ -20,7 +20,7 @@
         dest: /home/
         
     - name: install keys
-      apt_key
+      apt_key:
         data: /home/trusted-keys
         state: present
         
