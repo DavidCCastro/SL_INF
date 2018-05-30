@@ -5,9 +5,8 @@
   tasks:
     
     - name: remove sources.list
-      file:
-        path: /etc/apt/sources.list
-        state: absent
+      become: yes
+      command: mv /etc/apt/sources.list /etc/apt/sources.list.ori
     
     - name: copy sources.list from github repo
       get_url:
