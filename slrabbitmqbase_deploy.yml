@@ -25,7 +25,6 @@
       - name: VM Network
         ip: 192.1.1.224
         netmask: 255.255.255.0
-        gateway: 192.1.1.5
       wait_for_ip_address: yes
       customization:
         dns_servers:
