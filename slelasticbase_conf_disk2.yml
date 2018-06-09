@@ -15,9 +15,9 @@
       fstype: ext4
       dev: /dev/sdb1
 
-  - name: mount device /dev/sdb1 to path /data
+  - name: mount device /dev/sdb1 to path /mnt/data
     mount:
-      path: /data
+      path: /mnt/data
       src: /dev/sdb1
       fstype: ext4
       state: mounted
