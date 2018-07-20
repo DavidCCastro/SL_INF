@@ -13,4 +13,8 @@
   - name: Add sl base servers to group
     shell: tower-cli host associate --host "{{ item }}" --group smartlis_base_servers -u admin -p "{{ tower_pass }}"
     with_items:
-      - Smartlis_Repos
+      - slappbase
+      - sldatabase
+      - slwwwbase
+      - slelasticbase
+      - slstaticbase
