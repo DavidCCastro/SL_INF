@@ -12,7 +12,7 @@
 
   - name: Reconfigure VM
     vmware_guest:
-      vcenter_hostname: "{{ vcenter_ip }}"
+      hostname: "{{ vcenter_ip }}"
       username: "{{ vcenter_user }}"
       password: "{{ vcenter_pass }}"
       validate_certs: false
