@@ -17,6 +17,8 @@
       inventory: aviles
       name: "{{ item }}"
       state: absent
+      tower_username: admin
+      tower_password: "{{ tower_pass }}"
     with_items:
       - sldatabase
       - slelasticbase
@@ -25,5 +27,4 @@
       - slbase1
       - slrabbitmqbase
       - slappbase
-      tower_username: admin
-      tower_password: "{{ tower_pass }}"
+      
