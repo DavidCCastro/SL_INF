@@ -1,0 +1,11 @@
+- hosts: 127.0.0.1
+  connection: local
+  user: root
+  
+  tasks:
+  
+  - name: Delte test environment
+    tower_host:
+      inventory: aviles
+      name: smartlis_base_servers
+      state: absent
