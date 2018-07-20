@@ -3,6 +3,42 @@
   user: root
   
   tasks:
+  - name: Power off sl base servers
+    vmware_guest:
+      hostname: "{{ vcenter_ip }}"
+      username: "{{ vcenter_user }}"
+      password: "{{ vcenter_pass }}"
+      validate_certs: false
+      name: "{{ item }}"
+      state: poweredoff
+      force: yes
+    with_items:
+      - sldatabase
+      - slelasticbase
+      - slstaticbase
+      - slwwwbase
+      - slbase1
+      - slrabbitmqbase
+      - slappbase
+      
+  - name: Remove sl base servers
+    vmware_guest:
+      hostname: "{{ vcenter_ip }}"
+      username: "{{ vcenter_user }}"
+      password: "{{ vcenter_pass }}"
+      validate_certs: false
+      name: "{{ item }}"
+      state: absent
+      force: yes
+    with_items:
+      - sldatabase
+      - slelasticbase
+      - slstaticbase
+      - slwwwbase
+      - slbase1
+      - slrabbitmqbase
+      - slappbase
+      
   - name: Delete sl servers group
     tower_group:
       inventory: aviles
