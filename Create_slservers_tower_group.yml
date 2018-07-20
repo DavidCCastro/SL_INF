@@ -1,0 +1,11 @@
+- hosts: 127.0.0.1
+  user: root
+  
+  tasks:
+  - name: Create slservers tower group
+    tower_group:
+      inventory: aviles
+      name: smartlis_base_servers
+      state: present
+      tower_user: admin
+      tower_password: "{{ tower_pass }}"
