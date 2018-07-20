@@ -8,5 +8,6 @@
       inventory: aviles
       name: smartlis_base_servers
       state: absent
+      overwrite: yes
       tower_username: admin
       tower_password: "{{ tower_pass }}"
