@@ -18,7 +18,7 @@
       validate_certs: false
       name: slbase1
       folder: /CSI/vm
-      esxi_hostname: 192.1.1.151
+      cluster: Smartlis
       template: slbaseos_tplt
       state: poweredon
       datacenter: CSI
