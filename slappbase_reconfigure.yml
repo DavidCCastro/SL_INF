@@ -11,21 +11,17 @@
     when: (vcenter_user is not defined) or (vcenter_pass is not defined)
 
   - name: Reconfigure VM
-    vsphere_guest:
-      vcenter_hostname: "{{ vcenter_ip }}"
+    vmware_guest:
+      hostname: "{{ vcenter_ip }}"
       username: "{{ vcenter_user }}"
       password: "{{ vcenter_pass }}"
       validate_certs: false
-      guest: slappbase
-      state: reconfigured
+      name: slappbase
+      state: present
       force: yes
-      vm_extra_config:
-        vcpu.hotadd: yes
-        mem.hotadd:  yes
-        notes: This is a Test
-      vm_hardware:
+      hardware:
+        hotadd_cpu: true
+        hotadd_memory: true
         memory_mb: 8192
         num_cpus: 6
-      esxi:
-        datacenter: CSI
-        hostname: 192.1.1.151
+      cluster: Smartlis
