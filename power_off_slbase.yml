@@ -12,10 +12,10 @@
     when: (vcenter_user is not defined) or (vcenter_pass is not defined)
 
   - name: Power OFF VM
-    vsphere_guest:
-      vcenter_hostname: "{{ vcenter_ip }}"
+    vmware_guest:
+      hostname: "{{ vcenter_ip }}"
       username: "{{ vcenter_user }}"
       password: "{{ vcenter_pass }}"
       validate_certs: false
-      guest: slbase1
-      state: powered_off
+      name: slbase1
+      state: poweredoff
