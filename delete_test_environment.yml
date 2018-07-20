@@ -5,7 +5,7 @@
   tasks:
   
   - name: Delte test environment
-    tower_host:
+    tower_group:
       inventory: aviles
       name: smartlis_base_servers
       state: absent
