@@ -3,11 +3,27 @@
   user: root
   
   tasks:
-  - name: Delte test environment
+  - name: Delete sl servers group
     tower_group:
       inventory: aviles
       name: smartlis_base_servers
       state: absent
       overwrite: no
+      tower_username: admin
+      tower_password: "{{ tower_pass }}"
+      
+  - name: Delete sl test servers
+    tower_host:
+      inventory: aviles
+      name: "{{ item }}"
+      state: absent
+    with_items:
+      - sldatabase
+      - slelasticbase
+      - slstaticbase
+      - slwwwbase
+      - slbase1
+      - slrabbitmqbase
+      - slappbase
       tower_username: admin
       tower_password: "{{ tower_pass }}"
