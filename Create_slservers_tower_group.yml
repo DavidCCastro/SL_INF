@@ -9,3 +9,8 @@
       state: present
       tower_username: admin
       tower_password: "{{ tower_pass }}"
+      
+  - name: Add sl base servers to group
+    shell: tower-cli host associate --host "{{ item }}" --group smartlis_base_servers
+    with_items:
+      - Smartlis_Repos
