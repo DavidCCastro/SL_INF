@@ -19,7 +19,7 @@
       name: slappbase
       template: slbase1
       folder: /CSI/vm
-      esxi_hostname: 192.1.1.151
+      cluster: Smartlis
       datacenter: CSI
       networks:
       - name: VM Network
