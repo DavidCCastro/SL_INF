@@ -3,9 +3,10 @@
   user: root
   
   tasks:
-  
   - name: Delte test environment
     tower_group:
       inventory: aviles
       name: smartlis_base_servers
       state: absent
+      tower_username: admin
+      tower_password: "{{ tower_pass }}"
