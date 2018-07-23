@@ -20,6 +20,7 @@
       state: present
       force: yes
       hardware:
+        hotadd_cpu: true
         hotadd_memory: true
         memory_mb: 8192
         num_cpus: 6
