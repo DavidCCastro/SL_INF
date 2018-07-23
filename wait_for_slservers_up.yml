@@ -2,7 +2,5 @@
     
   tasks:
   - name: wait for slservers are up
-    wait_for:
-      port: 22
-      delay: 10
-    connection: local
+    wait_for_connection:
+    delay: 30
