@@ -5,7 +5,7 @@
   tasks:
   - name: wait for couchdb port 5984 and postgresql port 5432 are up
     wait_for:
-      host: 192.1.1.221
+      host: sldatabase
       port: "{{ item }}"
       delay: 1
       timeout: 300
