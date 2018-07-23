@@ -5,7 +5,7 @@
   tasks:
   - name: wait for couchdb port 5984 is up
     wait_for:
-      host: sldatabase
+      host: 192.1.1.221
       port: 5984
       delay: 1
       timeout: 300
