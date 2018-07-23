@@ -1,9 +1,11 @@
-- hosts: sldatabase
-    
+- hosts: slappbase
+  become_user: smartlis
+  become_method: sudo
+  
   tasks:
   - name: wait for couchdb port 5984 is up
     wait_for:
+      host: sldatabase
       port: 5984
-      delay: 10
-      timeout: 600
-    connection: local
+      delay: 1
+      timeout: 300
