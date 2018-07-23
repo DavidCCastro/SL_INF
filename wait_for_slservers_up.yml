@@ -4,5 +4,5 @@
   - name: wait for slservers are up
     wait_for:
       port: 22
-      state: started
+      delay: 10
     connection: local
