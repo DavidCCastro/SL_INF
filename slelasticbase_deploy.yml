@@ -30,6 +30,7 @@
         datastore: SAN
       networks:
       - name: VM Network
+        type: static
         ip: 192.1.1.222
         netmask: 255.255.255.0
       wait_for_ip_address: yes
