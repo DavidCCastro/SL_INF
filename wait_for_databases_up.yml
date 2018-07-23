@@ -6,6 +6,9 @@
   - name: wait for couchdb port 5984 is up
     wait_for:
       host: 192.1.1.221
-      port: 5984
+      port: "{{ item }}"
       delay: 1
       timeout: 300
+    with_items:
+      - 5984
+      - 5432
