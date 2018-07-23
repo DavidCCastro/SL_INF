@@ -1,4 +1,4 @@
-- hosts: slappbase
+- hosts: smartlis_base_servers
   user: smartlis
   become: yes
   become_method: sudo
