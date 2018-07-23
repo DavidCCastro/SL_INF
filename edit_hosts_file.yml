@@ -1,5 +1,6 @@
 - hosts: slappbase
-  become_user: smartlis
+  user: smartlis
+  become: yes
   become_method: sudo
   
   tasks:
