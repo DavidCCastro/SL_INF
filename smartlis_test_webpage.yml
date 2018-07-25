@@ -12,4 +12,5 @@
       method: POST
       user: suser
       password: "{{ suser_pass }}"
-      
+      status_code: 302
+    register: login
