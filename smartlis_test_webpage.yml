@@ -5,3 +5,11 @@
   - name: Check web http://192.1.1.220/smartlis returns status 200
     uri:
       url: http://192.1.1.220/smartlis
+  
+  - name: Login to http://192.1.1.220/smartlis
+    uri:
+      url: http://192.1.1.220/smartlis
+      method: POST
+      user: suser
+      password: "{{ suser_pass }}"
+      
