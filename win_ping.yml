@@ -1,4 +1,5 @@
 - hosts: 192.1.1.160
+  become_user: administrador
   
   tasks:
   - name: ping
