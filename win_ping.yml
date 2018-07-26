@@ -1,5 +1,5 @@
 - hosts: 192.1.1.160
   
   tasks:
-  - name ping
+  - name: ping
     win_ping:
