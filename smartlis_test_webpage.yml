@@ -12,7 +12,7 @@
       method: POST
       body_format: form-urlencoded
       body:
-        user: suser
+        name: suser
         password: "{{ suser_pass }}"
         enter: Sign in
       status_code: 302
