@@ -14,6 +14,6 @@
       body:
         name: suser
         password: "{{ suser_pass }}"
-        enter: Sign in
+        enter: OK
       status_code: 302
     register: login
