@@ -10,7 +10,10 @@
     uri:
       url: http://192.1.1.220/smartlis
       method: POST
-      user: suser
-      password: "{{ suser_pass }}"
+      body_format: form-urlencoded
+      body:
+        user: suser
+        password: "{{ suser_pass }}"
+        enter: Sign in
       status_code: 302
     register: login
