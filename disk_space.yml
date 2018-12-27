@@ -8,6 +8,7 @@
       msg: disk space has reached 70% threshold
     with_items: 
       - "{{ ansible_mounts }}"
+    ignore_errors: yes
     register: disk_space
 
   - name: Send message when sys calls count is greater than 250 in the last hour
