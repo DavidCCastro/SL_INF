@@ -6,4 +6,4 @@
       that: mount.size_available > mount.size_total|float * 0.3
       msg: disk space has reached 70% threshold
     when: item.mount == mountname
-    with_items: '{{ ansible_mounts }}'
+    with_items: "{{ ansible_mounts }}"
