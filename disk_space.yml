@@ -4,7 +4,7 @@
   - name: 'Ensure that free space is grater than 30%'
     assert:
       that: 
-        - item.mount != '/' or {{ item.mount == '/' and item.size_available > (item.size_total|float * 0.95) }}
+        - item.mount != '/' or {{ item.mount == '/' and item.size_available > (item.size_total|float * 0.3) }}
       msg: disk space has reached 70% threshold
     with_items: 
       - "{{ ansible_mounts }}"
