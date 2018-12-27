@@ -1,19 +1,19 @@
 - hosts: "{{ servers }}"
   
   tasks:
-  - name: 'Ensure that free space is grater than 30%'
+  - name: 'Ensure that free space is greater than 30%'
     assert:
       that: 
-        - item.mount != '/' or {{ item.mount == '/' and item.size_available > (item.size_total|float * 0.3) }}
+        - item.mount != '/' or {{ item.mount == '/' and item.size_available > (item.size_total|float * 0.95) }}
       msg: disk space has reached 70% threshold
     with_items: 
       - "{{ ansible_mounts }}"
     ignore_errors: yes
     register: disk_space
 
-  - name: Send message when sys calls count is greater than 250 in the last hour
+  - name: Send message when free space is less than 30%
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "< 30% libre"
-    when: disk_space.results[0]['item']['size_available']
+      msg: "{{ item.mount }} < 30% libre"
+    when: disk_space|failed
     delegate_to: localhost
