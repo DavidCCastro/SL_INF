@@ -1,4 +1,4 @@
-- hosts: {{ servers }}
+- hosts: "{{ servers }}"
   
   tasks:
   - name: Ensure that free space on {{ mountname }} is grater than 30%
