@@ -1,7 +1,7 @@
 - hosts: "{{ servers }}"
   
   tasks:
-  - name: Ensure that free space on {{ mountname }} is grater than 30%
+  - name: Ensure that free space on "{{ mountname }}" is grater than 30%
     assert:
       that: 
         - ( item.size_available < item.size_total - |float * 0.7 )
