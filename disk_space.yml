@@ -14,6 +14,6 @@
   - name: Send message when sys calls count is greater than 250 in the last hour
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "{{ mount }} 30% libre"
+      msg: "< 30% libre"
     when: disk_space.results[0]['item']['size_available']
     delegate_to: localhost
