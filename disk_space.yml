@@ -15,5 +15,5 @@
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: "{{ ansible_mounts }} < 30% libre"
-    when: result is failed
+    when: disk_space.results|failed
     delegate_to: localhost
