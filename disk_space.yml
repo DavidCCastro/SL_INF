@@ -6,5 +6,4 @@
       that: 
         - not {{ item.mount == '{{mountname}}' and ( item.size_available < item.size_total - ( item.size_total|float * 0.7 ) ) }}
       msg: disk space has reached 70% threshold
-    when: item.mount == mountname
     with_items: "{{ ansible_mounts }}"
