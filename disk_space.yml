@@ -5,5 +5,5 @@
     assert:
       that: mount.size_available > mount.size_total|float * 0.3
       msg: disk space has reached 70% threshold
-    vars:
-      mount: "{{ ansible_mounts | selectattr('mount','equalto',mountname) | list | first }}"
+    when: item.mount == mountname
+    with_items: '{{ ansible_mounts }}'
