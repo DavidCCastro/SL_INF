@@ -17,5 +17,5 @@
       msg: "{{ ansible_hostname }} {{ item.mount }} < 30% libre"
     with_items: 
       - "{{ ansible_mounts }}"
-    when: disk_space.evaluated_to == false
+    when: disk_space.msg.exists
     delegate_to: localhost
