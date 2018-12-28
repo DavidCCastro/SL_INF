@@ -5,9 +5,10 @@
     assert:
       that: 
         - item.mount != '/' or {{ item.mount == '/' and item.size_available > (item.size_total|float * 0.95) }}
-      msg: failed disk space has reached 70% threshold
+      msg: {{ item.failed }} failed disk space has reached 70% threshold
     with_items: 
       - "{{ ansible_mounts }}"
+      - "{{ failed: "failed" }}"
     ignore_errors: yes
     register: disk_space
 
