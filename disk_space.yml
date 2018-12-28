@@ -15,7 +15,7 @@
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: "{{ ansible_hostname }} {{ item.mount }} < 30% libre"
-    when: disk_space.find("failed") != -1
+    when: disk_space.msg.exists
     with_items: 
       - "{{ ansible_mounts }}"
     delegate_to: localhost
