@@ -1,7 +1,7 @@
 - hosts: "{{ servers }}"
   
   tasks:
-  - name: 'Ensure that free space is greater than 30%'
+  - name: 'Ensure that free space is greater than 10%'
     assert:
       that: 
         - item.mount != '/' or {{ item.mount == '/' and item.size_available > (item.size_total|float * 0.9) }}
@@ -11,10 +11,10 @@
     ignore_errors: yes
     register: disk_space
 
-  - name: Send message when free space is less than 30%
+  - name: Send message when free space is less than 10%
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "{{ item.item.mount }} < 30% libre"
+      msg: "{{ ansible_hostname }} {{ item.item.mount }} < 10% free space"
     with_items: 
       - "{{ disk_space.results }}"
     when: item.failed == true
