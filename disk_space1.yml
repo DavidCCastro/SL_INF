@@ -1,0 +1,16 @@
+- hosts: "{{ servers }}"
+  
+  tasks:
+  - name: 'Ensure that free space is greater than 30%'
+    assert:
+      that: 
+        - item.mount != '/' or {{ item.mount == '/' and item.size_available > (item.size_total|float * 0.9) }}
+      msg: "failed disk space has reached 70% threshold"
+    with_items: 
+      - "{{ ansible_mounts }}"
+    ignore_errors: yes
+    register: disk_space
+
+  - name: Send message when free space is less than 30%
+    debug:
+      var: disk_space
