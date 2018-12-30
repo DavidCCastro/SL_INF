@@ -17,5 +17,5 @@
       msg: "{{ item.mount }} {{ disk_space.stdout }} < 30% libre"
     with_items: 
       - "{{ ansible_mounts }}"
-    when: disk_space.failed == true
+    when: disk_space.results.msg.find("failed") != -1
     delegate_to: localhost
