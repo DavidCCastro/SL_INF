@@ -16,6 +16,6 @@
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: "{{ item.mount }} {{ disk_space.stdout }} < 30% libre"
     with_items: 
-      - "{{ ansible_mounts }}"
-    when: disk_space.results[0].failed == true
+      - "{{ disk_space.results }}"
+    when: item.failed == true
     delegate_to: localhost
