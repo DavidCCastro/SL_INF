@@ -14,7 +14,7 @@
   - name: Send message when free space is less than 20%
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "{{ ansible_hostname }} {{ item.item.mount }} < 20% free space,  {{ (item.item.size_available / 1024) / 1024 |int }}"
+      msg: "{{ ansible_hostname }} {{ item.item.mount }} < 20% free space,  {{ (item.item.size_available / 1024) / 1024 |int }}MB"
     with_items: 
       - "{{ disk_space.results }}"
     when: item.failed == true
