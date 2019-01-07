@@ -1,8 +1,9 @@
-- hosts: 127.0.0.1
+- hosts: "{{ servers }}"
+  user: smartlis
   tasks:
   - name: Create VM from template
     vmware_guest:
-      hostname: "{{ vcenter_ip }}"
+      hostname: 10.232.7.105
       username: "{{ vcenter_user }}"
       password: "{{ vcenter_pass }}"
       validate_certs: false
@@ -11,21 +12,14 @@
       folder: "{{ vm_folder }}"
       esxi_hostname: "{{ esxi_host }}"
       datacenter: " {{ datacenter }}"
-      disk:
-      - size_gb: 40
-        type: thin
-        datastore: "{{ datastore_name }}"
-      - size_gb: 300
-        type: thin
-        datastore: "{{ datastore_name }}"
+      datastore: "{{ datastore_name }}"
       networks:
-      - name: "{{ Network }}"
+      - name: XLAN
         type: static
         ip: "{{ ip }}"
-        netmask: "{{ netmask }}"
+        netmask: 255.255.255.0
       wait_for_ip_address: yes
       customization:
         dns_servers:
-        - "{{ dns1 }}"
-        - "{{ dns2 }}"
-      delegate_to: SE00SANSL
+        - 10.232.0.9
+        - 10.233.4.40
