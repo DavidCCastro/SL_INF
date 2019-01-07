@@ -1,0 +1,30 @@
+  tasks:
+  - name: Create VM from template
+    vmware_guest:
+      hostname: "{{ vcenter_ip }}"
+      username: "{{ vcenter_user }}"
+      password: "{{ vcenter_pass }}"
+      validate_certs: false
+      name: "{{ vm_name }}"
+      template: "{{ template_name }}"
+      folder: "{{ vm_folder }}"
+      esxi_hostname: "{{ esxi_host }}"
+      datacenter: " {{ datacenter }}"
+      disk:
+      - size_gb: 40
+        type: thin
+        datastore: "{{ datastore_name }}"
+      - size_gb: 300
+        type: thin
+        datastore: "{{ datastore_name }}"
+      networks:
+      - name: "{{ Network }}"
+        type: static
+        ip: "{{ ip }}"
+        netmask: "{{ netmask }}"
+      wait_for_ip_address: yes
+      customization:
+        dns_servers:
+        - "{{ dns1 }}"
+        - "{{ dns2 }}"
+      delegate_to: SE00SANSL
