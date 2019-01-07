@@ -1,3 +1,4 @@
+- hosts: 127.0.0.1
   tasks:
   - name: Create VM from template
     vmware_guest:
