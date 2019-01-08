@@ -23,7 +23,7 @@
   - name: Sending an e-mail using Gmail SMTP servers
     mail:
       host: smtp.gmail.com
-      port: 587
+      port: 465
       username: davidccastro1977@gmail.com
       password: "{{ mail_pass }}"
       to: David <davidccastro1977@gmail.com>
