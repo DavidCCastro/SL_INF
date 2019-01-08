@@ -28,4 +28,6 @@
       to: David <davidccastro1977@gmail.com>
       subject: Ansible-report
       body: "{{ ansible_hostname }} {{ item.item.mount }} < 20% free space,  {{ ((item.item.size_available / 1024) / 1024) | int }}MB"
+    with_items: 
+      - "{{ disk_space.results }}"
     delegate_to: localhost
