@@ -25,6 +25,7 @@
       host: smtp.gmail.com
       port: 587
       username: davidccastro1977@gmail.com
+      password: "{{ mail_pass }}"
       to: David <davidccastro1977@gmail.com>
       subject: Ansible-report
       body: "{{ ansible_hostname }} {{ item.item.mount }} < 20% free space,  {{ ((item.item.size_available / 1024) / 1024) | int }}MB"
