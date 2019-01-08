@@ -22,8 +22,10 @@
     
   - name: Sending an e-mail using Gmail SMTP servers
     mail:
-      host: smtp.gmail.com
-      port: 25
+      host: sentryemeagmail.roche.net
+      port: 465
+      username: david.camacho_castro@roche.com
+      password: "{{ mail_pass }}"
       to: David <davidccastro1977@gmail.com>
       subject: Ansible-report
       body: "{{ ansible_hostname }} {{ item.item.mount }} < 20% free space,  {{ ((item.item.size_available / 1024) / 1024) | int }}MB"
