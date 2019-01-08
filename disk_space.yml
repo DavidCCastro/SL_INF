@@ -30,4 +30,5 @@
       body: "{{ ansible_hostname }} {{ item.item.mount }} < 20% free space,  {{ ((item.item.size_available / 1024) / 1024) | int }}MB"
     with_items: 
       - "{{ disk_space.results }}"
+    when: item.failed == true
     delegate_to: localhost
