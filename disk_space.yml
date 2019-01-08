@@ -23,7 +23,7 @@
   - name: Sending an e-mail using Gmail SMTP servers
     mail:
       host: sentryemeagmail.roche.net
-      port: 465
+      port: 587
       username: david.camacho_castro@roche.com
       password: "{{ mail_pass }}"
       to: David <davidccastro1977@gmail.com>
