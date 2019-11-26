@@ -1,0 +1,26 @@
+- hosts: 127.0.0.1
+  connection: local
+  user: root
+  sudo: false
+  gather_facts: false
+  serial: 1
+
+  tasks:
+  - name: Create SL server from template
+    vmware_guest:
+      hostname: "{{ vcenter_ip }}"
+      username: "{{ vcenter_user }}"
+      password: "{{ vcenter_pass }}"
+      validate_certs: false
+      name: slelastic01
+      folder: /Taller/vm
+      esxi_hostname: 192.1.1.141
+      datacenter: Taller
+      state: present
+      disk:
+      - size_gb: 40
+        type: thin
+        datastore: SL_SAN
+      - size_gb: 400
+        type: thin
+        datastore: SL_SAN
