@@ -9,8 +9,6 @@
   - name: Create SL server from template
     vmware_guest:
       hostname: "{{ vcenter_ip }}"
-      username: "{{ vcenter_user }}"
-      password: "{{ vcenter_pass }}"
       validate_certs: false
       name: slelastic01
       folder: /Taller/vm
